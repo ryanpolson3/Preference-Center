@@ -34,10 +34,10 @@ body {
   margin: 0 auto;
   padding: 0;
   border: none;
-  
+  background-color: #ededed;
 }
 
-@media screen and (min-width: 426px) {
+/* @media screen and (min-width: 426px) {
   .gradient1 {
     height: 100%;
     width: 100%;
@@ -72,7 +72,7 @@ body {
     );
     background-repeat: no-repeat;
   }
-}
+} */
 
 /* Modal Section */
 /* #modal_loading_spinner {
@@ -118,9 +118,34 @@ body.loading #modal_loading {
   border-style: none;
   border-width: 0px;
   width: 100%;
-  height: 645px;
-  max-width: 475px;
+  height: auto;
+  max-width: 650px;
   background: var(--white);
+}
+
+#header_wrapper {
+   margin: 0 auto;
+   width: 100%;
+   height: 136px;
+   max-width: 650px;
+   background-color: #1F3F66;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.header_logo {
+   width: 100%;
+   height: 80px;
+   max-width: 220px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.header_logo img {
+   width: 100%;
+   height: 24px;
 }
 
 .layout_wrapper {
@@ -131,11 +156,11 @@ body.loading #modal_loading {
 
 @media screen and (min-width: 478px) {
   .layout {
-    position: relative;
-    top: 50px;
-    padding: 70px 0 0 0;
-    height: 760px;
-    box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
+   /* position: relative;
+   top: 50px; */
+   padding: 40px 0 0 0;
+   height: auto;
+   box-shadow: 0 5px 10px 0 rgba(45,45,45,0.2);
   }
   .layout_wrapper {
     width: 65%;
@@ -148,15 +173,9 @@ body.loading #modal_loading {
   clear: both;
 }
 
-#text1_wrapper,
-#text2_wrapper {
+#text1_wrapper {
   display: block;
   width: 100%;
-}
-
-#text2_wrapper {
-  padding-top: 30px;
-  padding-bottom: 20px;
 }
 
 .text1 {
@@ -166,18 +185,6 @@ body.loading #modal_loading {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   line-height: 20px;
-}
-
-.text2 {
-  height: 27px;
-  font-family: var(--open-sans-normal);
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 22px;
-}
-
-.text1,
-.text2 {
   text-align: center;
   font-size: 20px;
   color: var(--grey-very-dark);
