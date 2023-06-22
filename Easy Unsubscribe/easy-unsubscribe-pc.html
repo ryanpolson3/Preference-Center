@@ -86,10 +86,10 @@ Variable.SetValue("@broswer",browser);
 		</div>
 	</div>
 	<div class="layout">
+		<div id="text1_wrapper">
+			<div class="text1">Enter your email address to unsubscribe from the KOMO Daily Newsletter</div>
+		</div>
 		<div class="layout_wrapper">
-			<div id="text1_wrapper">
-				<div class="text1">Enter your email address to unsubscribe from the KOMO Daily Newsletter</div>
-			</div>
 			<form style="display: block" id="newsletterSignUp" method="post" action="#" novalidate>
 				<div class="form_wrapper">
 					<div class="form">
@@ -102,20 +102,6 @@ Variable.SetValue("@broswer",browser);
 							<input value="In-line sign-up" type="hidden" name="source" />
 						</div>
 
-						<!-- First Name -->
-						<div class="fieldset form_spacing">
-							<input class="form_inputs" type="text" id="form_input_first_name" class="form_inputs" name="first_name" placeholder="First Name (optional)"/>
-							<label class="form_labels visibility_hidden" id="label_first_name" for="form_input_first_name">First Name</label>
-							<!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
-						</div>
-
-						<!-- Last Name -->
-						<div class="fieldset form_spacing">
-							<input class="form_inputs" type="text" id="form_input_last_name" class="form_inputs" name="last_name" placeholder="Last Name (optional)"/>
-							<label class="form_labels visibility_hidden" id="label_last_name" for="form_input_last_name">Last Name</label>
-							<!-- <div id="form_input_error" class="form_inputs_help hide"></div> -->
-						</div>
-
 						<!-- Email Address -->
 						<div class="fieldset form_spacing">
 							<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
@@ -123,41 +109,10 @@ Variable.SetValue("@broswer",browser);
 							<div id="form_input_error" class="form_inputs_help hide"></div>
 						</div>
 
-						<!-- Checkboxes -->
-						<div class="fieldset form_spacing flex">
-							<div class="checkbox_block">
-								<input type="checkbox" id="checkbox1" class="checkbox" checked/>
-							</div>
-							<div class="label_block">
-								<label class="checkbox_label" for="checkbox1">Yes, I would like to recieve the Daily Newsletter and communications from LocalNews</label>
-							</div>
-						</div>
-
-						<div class="fieldset form_spacing flex">
-							<div class="checkbox_block">
-								<input type="checkbox" id="checkbox2" class="checkbox" checked/>
-							</div>
-							<div class="label_block">
-								<label class="checkbox_label" for="checkbox2">Yes, I would like to recieve the Weather Newsletter from LocalNews</label>
-							</div>
-						</div>
-
-						<div class="fieldset form_spacing">
-							<div class="checkbox_wrapper flex">
-								<div class="checkbox_block">
-									<input type="checkbox" id="checkbox3" class="checkbox"/>
-								</div>
-								<div class="label_block">
-									<label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions" href="https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy" href="https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Privacy Policy</a></label>
-								</div>
-							</div>
-							<div id="form_input_checkbox_error" class="form_inputs_help"></div>
-						</div>
-
-						<!-- Sign Up - Button -->
-						<div class="fieldset sign-up_wrapper" >
-							<button id="sign_up" class="sign-up" name="sign_up" aria-label="Submit Modal Form">
-								Sign Up
+						<!-- Unsubscribe - Button -->
+						<div class="fieldset unsubscribe_wrapper" >
+							<button id="unsubscribe" class="unsubscribe" name="unsubscribe" aria-label="Unsubscribe Button">
+								Unsubscribe
 							</button>
 						</div>
 
@@ -170,10 +125,37 @@ Variable.SetValue("@broswer",browser);
 					<div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
 				</div>
 			</div>
-			<!-- <span id="error_bubble" class="error-bubble" style="display: none">
-				<span id="error_message" class="error-message"></span>
-				<span id="error_close">x</span>
-			</span> -->
+			
+			<!-- Checkboxes -->
+			<!-- <div class="fieldset form_spacing flex">
+				<div class="checkbox_block">
+					<input type="checkbox" id="checkbox1" class="checkbox" checked/>
+				</div>
+				<div class="label_block">
+					<label class="checkbox_label" for="checkbox1">Yes, I would like to recieve the Daily Newsletter and communications from LocalNews</label>
+				</div>
+			</div>
+
+			<div class="fieldset form_spacing flex">
+				<div class="checkbox_block">
+					<input type="checkbox" id="checkbox2" class="checkbox" checked/>
+				</div>
+				<div class="label_block">
+					<label class="checkbox_label" for="checkbox2">Yes, I would like to recieve the Weather Newsletter from LocalNews</label>
+				</div>
+			</div>
+
+			<div class="fieldset form_spacing">
+				<div class="checkbox_wrapper flex">
+					<div class="checkbox_block">
+						<input type="checkbox" id="checkbox3" class="checkbox"/>
+					</div>
+					<div class="label_block">
+						<label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions" href="https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy" href="https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Privacy Policy</a></label>
+					</div>
+				</div>
+				<div id="form_input_checkbox_error" class="form_inputs_help"></div>
+			</div> -->
 		</div>
 	</div>
 </body>
@@ -249,7 +231,7 @@ Variable.SetValue("@broswer",browser);
 
 	// Function to disable sign up button unless checkbox is checked
 	$(function() {
-		const button = $('#sign_up');
+		const button = $('#unsubscribe');
 		const form_input_checkbox_error = $("#form_input_checkbox_error");
 		button.attr('disabled', 'disabled');
 		$('#checkbox3').change(function(e) {
