@@ -72,7 +72,7 @@ Variable.SetValue("@broswer",browser);
         }
       };
     </script> -->
-	<link rel="stylesheet" href="/Easy Unsubscribe/easy-unsubscribe-pc.css">
+	<link rel="stylesheet" href="/Easy Unsubscribe/unsubscribe.css">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
 	<!-- Font Awesome -->
@@ -126,48 +126,11 @@ Variable.SetValue("@broswer",browser);
 					</div>
 				</div>
 			</form>
-			<div id="thxlayout" style="display: none">
-				<div class="thxtext1_wrapper">
-					<div class="thxtext1">Thank you for subscribing!</div>
-					<div class="thxtext2">You may now <a href="#" target="_blank" class="browse-more-news">browse more news</a></div>
-				</div>
-			</div>
-			
-			<!-- Checkboxes -->
-			<!-- <div class="fieldset form_spacing flex">
-				<div class="checkbox_block">
-					<input type="checkbox" id="checkbox1" class="checkbox" checked/>
-				</div>
-				<div class="label_block">
-					<label class="checkbox_label" for="checkbox1">Yes, I would like to recieve the Daily Newsletter and communications from LocalNews</label>
-				</div>
-			</div>
-
-			<div class="fieldset form_spacing flex">
-				<div class="checkbox_block">
-					<input type="checkbox" id="checkbox2" class="checkbox" checked/>
-				</div>
-				<div class="label_block">
-					<label class="checkbox_label" for="checkbox2">Yes, I would like to recieve the Weather Newsletter from LocalNews</label>
-				</div>
-			</div>
-
-			<div class="fieldset form_spacing">
-				<div class="checkbox_wrapper flex">
-					<div class="checkbox_block">
-						<input type="checkbox" id="checkbox3" class="checkbox"/>
-					</div>
-					<div class="label_block">
-						<label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions" href="https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy" href="https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Privacy Policy</a></label>
-					</div>
-				</div>
-				<div id="form_input_checkbox_error" class="form_inputs_help"></div>
-			</div> -->
 		</div>
 	</div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
-  <script>
+<script>
    $(function () {
       $("#newsletterSignUp").submit(function (e) {
 			e.preventDefault();
@@ -260,6 +223,5 @@ Variable.SetValue("@broswer",browser);
 		pageUrl = document.getElementById("page_url").innerHTML;
 	});
 	
-  </script> 
-
+</script> 
 </html>
