@@ -104,7 +104,7 @@ Variable.SetValue("@broswer",browser);
 
 						<!-- Email Address -->
 						<div class="fieldset form_spacing">
-							<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Email Address (required)" required/>
+							<input class="form_inputs" type="text" id="form_input_email" class="form_inputs" name="email" placeholder="Enter your email" value=""/>
 							<label class="form_labels visibility_hidden" id="label_email" for="form_input_email">Email Address</label>
 							<div id="form_input_error" class="form_inputs_help hide"></div>
 						</div>
@@ -114,6 +114,13 @@ Variable.SetValue("@broswer",browser);
 							<button id="unsubscribe" class="unsubscribe" name="unsubscribe" aria-label="Unsubscribe Button">
 								Unsubscribe
 							</button>
+						</div>
+
+						<!-- Update Preferences - Link -->
+						<div class="fieldset update_wrapper" >
+							<a id="update" class="update" name="update" aria-label="Update Link">
+								Updated your preferences
+							</a>
 						</div>
 
 					</div>
