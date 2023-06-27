@@ -116,7 +116,7 @@ set @channel = RequestParameter("channel")
                   <!-- Checkboxes -->
                   <div class="fieldset form_spacing flex">
                      <div class="checkbox_block">
-                        <input type="checkbox" id="checkbox1" class="checkbox" checked />
+                        <input type="checkbox" id="checkbox1" class="checkbox" />
                      </div>
                      <div class="label_block">
                         <label class="checkbox_label" for="checkbox1">I get too many emails</label>
@@ -125,7 +125,7 @@ set @channel = RequestParameter("channel")
 
                   <div class="fieldset form_spacing flex">
                      <div class="checkbox_block">
-                        <input type="checkbox" id="checkbox2" class="checkbox" checked />
+                        <input type="checkbox" id="checkbox2" class="checkbox" />
                      </div>
                      <div class="label_block">
                         <label class="checkbox_label" for="checkbox2">The content isn't relevant</label>
@@ -245,51 +245,28 @@ set @channel = RequestParameter("channel")
    $(function () {
       const button = $('#submit');
       //const form_input_checkbox_error = $("#form_input_checkbox_error");
+      button.attr('disabled', 'disabled');
 
       // Checkbox1
-      button.attr('disabled', 'disabled');
-      $('#checkbox1').change(function (e) {
-         if (this.value) {
+      $("#checkbox1, #checkbox2, #checkbox3, #checkbox4").change(function (e) {
+         /* if (this.checked > 0) {
+             button.removeAttr('disabled');
+             //form_input_checkbox_error.addClass('hide');
+          } else {
+             button.attr('disabled', 'disabled');
+             //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+          }*/
+
+         do {
             button.removeAttr('disabled');
             //form_input_checkbox_error.addClass('hide');
-         } else {
-            button.attr('disabled', 'disabled');
-            //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
          }
+
+         button.attr('disabled', 'disabled');
+         //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
       })
 
-      // Checkbox2
-      $('#checkbox2').change(function (e) {
-         if (this.value) {
-            button.removeAttr('disabled');
-            //form_input_checkbox_error.addClass('hide');
-         } else {
-            button.attr('disabled', 'disabled');
-            //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
-         }
-      })
 
-      // Checkbox3
-      $('#checkbox3').change(function (e) {
-         if (this.value) {
-            button.removeAttr('disabled');
-            //form_input_checkbox_error.addClass('hide');
-         } else {
-            button.attr('disabled', 'disabled');
-            //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
-         }
-      })
-
-      // Checkbox4
-      $('#checkbox4').change(function (e) {
-         if (this.value) {
-            button.removeAttr('disabled');
-            //form_input_checkbox_error.addClass('hide');
-         } else {
-            button.attr('disabled', 'disabled');
-            //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
-         }
-      })
    });
 
 
