@@ -109,7 +109,7 @@ set @channel = RequestParameter("channel")
 
                   <div id="text3_wrapper">
                      <div class="text3">
-                        Reason for unsubscribe <span class="update-your-preferences">(select all that apply)</span>
+                        Reason for unsubscribe <span class="select-all-that-apply">(select all that apply)</span>
                      </div>
                   </div>
 
@@ -119,7 +119,7 @@ set @channel = RequestParameter("channel")
                         <input type="checkbox" id="checkbox1" class="checkbox" checked />
                      </div>
                      <div class="label_block">
-                        <label class="checkbox_label" for="checkbox1">Yes, I would like to recieve the Daily Newsletter and communications from LocalNews</label>
+                        <label class="checkbox_label" for="checkbox1">I get too many emails</label>
                      </div>
                   </div>
 
@@ -128,28 +128,41 @@ set @channel = RequestParameter("channel")
                         <input type="checkbox" id="checkbox2" class="checkbox" checked />
                      </div>
                      <div class="label_block">
-                        <label class="checkbox_label" for="checkbox2">Yes, I would like to recieve the Weather Newsletter from LocalNews</label>
+                        <label class="checkbox_label" for="checkbox2">The content isn't relevant</label>
+                     </div>
+                  </div>
+
+                  <div class="fieldset form_spacing flex">
+                     <div class="checkbox_block">
+                        <input type="checkbox" id="checkbox3" class="checkbox" />
+                     </div>
+                     <div class="label_block">
+                        <label class="checkbox_label" for="checkbox3">Too many ads</label>
                      </div>
                   </div>
 
                   <div class="fieldset form_spacing">
-                     <div class="checkbox_wrapper flex">
-                        <div class="checkbox_block">
-                           <input type="checkbox" id="checkbox3" class="checkbox" />
+                     <div class="checkbox_wrapper">
+                        <div class="flex">
+                           <div class="checkbox_block">
+                              <input type="checkbox" id="checkbox4" class="checkbox" />
+                           </div>
+                           <div class="label_block">
+                              <label class="checkbox_label" for="checkbox4">Other (Please specify)</label>
+                           </div>
                         </div>
-                        <div class="label_block">
-                           <label class="checkbox_label" for="checkbox3">By Signing up, I acknowledge I have read and agree to the <a class="terms_and_conditions"
-                                 href="https://sbgi.net/terms-conditions/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Terms &amp; Conditions</a> and the <a class="privacy_policy"
-                                 href="https://sbgi.net/privacy-policy/?utm_source=sfmc&utm_medium=email&sfmc_id=4650205&utm_guid=fe2b8985-b049-4318-bbb1-0e299c633a18&utm_campaign=" target="_blank">Privacy Policy</a></label>
+                        <div class="textarea_wrapper">
+                           <textarea class="form_inputs" name="" id="" cols="30" rows="10"></textarea>
                         </div>
                      </div>
+
                      <div id="form_input_checkbox_error" class="form_inputs_help"></div>
                   </div>
 
-                  <!-- Unsubscribe - Button -->
-                  <div class="fieldset unsubscribe_wrapper">
-                     <button id="unsubscribe" class="unsubscribe" name="unsubscribe" aria-label="Unsubscribe Button">
-                        Unsubscribe
+                  <!-- Submit - Button -->
+                  <div class="fieldset submit_wrapper">
+                     <button id="submit" class="submit" name="submit" aria-label="Submit Button">
+                        Submit
                      </button>
                   </div>
 
@@ -236,7 +249,7 @@ set @channel = RequestParameter("channel")
 
    // Function to disable sign up button unless checkbox is checked
    $(function () {
-      const button = $('#unsubscribe');
+      const button = $('#submit');
       //const form_input_checkbox_error = $("#form_input_checkbox_error");
       button.attr('disabled', 'disabled');
       $('#form_input_email').change(function (e) {
