@@ -241,18 +241,47 @@ set @channel = RequestParameter("channel")
       $("#newsletterSignUp").hide();
    }
 
-   // Function to validate email address
-   function validateEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-   }
-
-   // Function to disable sign up button unless checkbox is checked
+   // Function to disable sign up button unless a checkbox is checked
    $(function () {
       const button = $('#submit');
       //const form_input_checkbox_error = $("#form_input_checkbox_error");
+
+      // Checkbox1
       button.attr('disabled', 'disabled');
-      $('#form_input_email').change(function (e) {
+      $('#checkbox1').change(function (e) {
+         if (this.value) {
+            button.removeAttr('disabled');
+            //form_input_checkbox_error.addClass('hide');
+         } else {
+            button.attr('disabled', 'disabled');
+            //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+         }
+      })
+
+      // Checkbox2
+      $('#checkbox2').change(function (e) {
+         if (this.value) {
+            button.removeAttr('disabled');
+            //form_input_checkbox_error.addClass('hide');
+         } else {
+            button.attr('disabled', 'disabled');
+            //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+         }
+      })
+
+      // Checkbox3
+      $('#checkbox3').change(function (e) {
+         if (this.value) {
+            button.removeAttr('disabled');
+            //form_input_checkbox_error.addClass('hide');
+         } else {
+            button.attr('disabled', 'disabled');
+            //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
+         }
+      })
+
+      // Checkbox4
+      $('#checkbox4').change(function (e) {
          if (this.value) {
             button.removeAttr('disabled');
             //form_input_checkbox_error.addClass('hide');
@@ -263,13 +292,6 @@ set @channel = RequestParameter("channel")
       })
    });
 
-   // Function to update "browse more news" link
-   $(function () {
-      //let pageUrl = 'Page Url: ' + document.getElementById("channel").value;
-      let pageUrl = 'Page Url: ' + 'https://nbc16.com/sign-up';
-      console.log(pageUrl);
-      pageUrl = document.getElementById("page_url").innerHTML;
-   });
 
 </script>
 
