@@ -1,0 +1,264 @@
+<!-- %%[
+set @channel = RequestParameter("channel")
+]%% -->
+<script type="javascript" runat="server">
+   Platform.Load("core","1"); 
+   var ip = Platform.Request.ClientIP();
+   var browser = Platform.Request.Browser();
+   Variable.SetValue("@ip",ip);
+   Variable.SetValue("@broswer",browser);
+   </script>
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <script>
+      var sendToUDL = function (dLdata) {
+         if (dLdata && dLdata.constructor == Object && window.JSON) {
+            window.dataLayer = window.dataLayer || [];
+            //console.log(window.dataLayer);
+            window.dataLayer.push({
+               'event': 'newsletter_signup_complete'
+            });
+            console.log('data layer push complete');
+            console.log(window.dataLayer);
+         }
+         else {
+            console.log('ERROR: cross-domain messaging');
+         }
+      };
+   </script>
+
+   <!-- <script>
+         window.dataLayer = window.dataLayer || [];
+       </script> -->
+   <!-- Google Tag Manager -->
+   <!-- <script>(function(w,d,s,l,i){
+           w[l]=w[l]||[];
+           w[l].push({
+             'gtm.start':
+             new Date().getTime(),event:'gtm.js'}
+                    );
+           var f=d.getElementsByTagName(s)[0],
+               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+           j.async=true;
+           j.src=
+             'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+           f.parentNode.insertBefore(j,f);
+         }
+               )(window,document,'script','dataLayer','GTM-NKJ68BG');
+       </script> -->
+   <!-- End Google Tag Manager -->
+   <!-- Google Tag Manager (noscript) -->
+   <!-- <noscript>
+         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKJ68BG"
+                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
+       </noscript> -->
+   <!-- End Google Tag Manager (noscript) -->
+   <!-- <script>
+         var sendToUDL = function(dLdata) {
+           if (dLdata && dLdata.constructor == Object && window.JSON) {
+             window.dataLayer.push({
+               'event':'newsletter_signup_complete',
+             }
+                                  );
+             console.log('data layer push complete');
+             console.log(window.dataLayer);
+           }
+           else {
+             console.log('ERROR: cross-domain messaging');
+           }
+         };
+       </script> -->
+   <link rel="stylesheet" href="/Easy Unsubscribe/feedback.css">
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+   <!-- Font Awesome -->
+   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+   <div id="header_wrapper">
+      <div class="header_logo">
+         <img src="https://image.news.sbgtv.com/lib/fe2e11717164057f721d74/m/1/0595b4e6-3209-414d-bcb3-84972bddbd3e.jpg" alt="News Channel Logo">
+      </div>
+   </div>
+   <div class="layout">
+      <div id="text1_wrapper">
+         <div class="text1">You have been successfully unsubscribed from the KOMO Daily Newsletter</div>
+      </div>
+      <div id="text2_wrapper">
+         <div class="text2">
+            If you did this in error, you may re-subscribe by <a class="update-your-preferences" href="#" target="_blank">updating your preferences</a>.
+         </div>
+      </div>
+      <div class="layout_wrapper">
+         <form style="display: block" id="newsletterSignUp" method="post" action="#" novalidate>
+            <div class="form_wrapper">
+               <div class="form">
+
+                  <!-- Hidden Fields -->
+                  <div class="hidden_fields">
+                     <input id="channel" value="%%=v(@channel)=%%" type="hidden" name="channel" />
+                     <input value="%%=v(@ip)=%%" type="hidden" name="ip" />
+                     <input value="%%=v(@broswer)=%%" type="hidden" name="broswer" />
+                     <input value="In-line sign-up" type="hidden" name="source" />
+                  </div>
+
+                  <div id="text3_wrapper">
+                     <div class="text3">
+                        Reason for unsubscribe <span class="select-all-that-apply">(select all that apply)</span>
+                     </div>
+                  </div>
+
+                  <!-- Checkboxes -->
+                  <div class="fieldset form_spacing flex">
+                     <div class="checkbox_block">
+                        <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox" />
+                     </div>
+                     <div class="label_block">
+                        <label class="checkbox_label" for="checkbox1">I get too many emails</label>
+                     </div>
+                  </div>
+
+                  <div class="fieldset form_spacing flex">
+                     <div class="checkbox_block">
+                        <input type="checkbox" id="checkbox2" class="checkbox" name="checkbox" />
+                     </div>
+                     <div class="label_block">
+                        <label class="checkbox_label" for="checkbox2">The content isn't relevant</label>
+                     </div>
+                  </div>
+
+                  <div class="fieldset form_spacing flex">
+                     <div class="checkbox_block">
+                        <input type="checkbox" id="checkbox3" class="checkbox" name="checkbox" />
+                     </div>
+                     <div class="label_block">
+                        <label class="checkbox_label" for="checkbox3">Too many ads</label>
+                     </div>
+                  </div>
+
+                  <div class="fieldset form_spacing">
+                     <div class="checkbox_wrapper">
+                        <div class="flex">
+                           <div class="checkbox_block">
+                              <input type="checkbox" id="checkbox4" class="checkbox" name="checkbox" />
+                           </div>
+                           <div class="label_block">
+                              <label class="checkbox_label" for="checkbox4">Other (Please specify)</label>
+                           </div>
+                        </div>
+                        <div class="textarea_wrapper">
+                           <textarea class="form_inputs" name="" id="" cols="30" rows="10"></textarea>
+                        </div>
+                     </div>
+
+                     <div id="form_input_checkbox_error" class="form_inputs_help"></div>
+                  </div>
+
+                  <!-- Submit - Button -->
+                  <div class="fieldset submit_wrapper">
+                     <button id="submit" class="submit" name="submit" aria-label="Submit Button">
+                        Submit
+                     </button>
+                  </div>
+
+               </div>
+            </div>
+         </form>
+      </div>
+      <div id="thxlayout" style="display: none">
+         <div class="thxtext1_wrapper">
+            <div class="thxtext1">Thank you for your feedback</div>
+         </div>
+      </div>
+   </div>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
+<script>
+   $(function () {
+      $("#newsletterSignUp").submit(function (e) {
+         e.preventDefault();
+         data = $(this).serialize();
+         sendToUDL({ event: 'newsletter_signup_complete' })
+
+         if ($(this).find("input[name='email']").val().length === 0) {
+
+            // Error Message: Email address required
+            $(this).find("input[name='email']").addClass("form_input_error");
+            $(this).find("label[id='label_email']").addClass("form_label_error");
+            const form_error_el = $(this).find("div[id='form_input_error']");
+            form_error_el.removeClass("hide").text('Email address is required');
+
+         } else if (!validateEmail($(this).find("input[name='email']").val())) {
+
+            // Error Message: Email address is invalid
+            $(this).find("input[name='email']").addClass("form_input_error");
+            $(this).find("label[id='label_email']").addClass("form_label_error");
+            const form_error_el = $(this).find("div[id='form_input_error']");
+            form_error_el.removeClass("hide").text('Email address is invalid');
+
+         } else {
+
+            // Successful Validation: Remove all error messages and states
+            $(this).find("input[name='email']").removeClass("form_input_error");
+            $(this).find("label[id='label_email']").removeClass("form_label_error");
+            const form_error_el = $(this).find("div[id='form_input_error']");
+            form_error_el.addClass("hide").text('');
+
+            // Run AJAX
+            $.ajax({
+               'data': $(this).serialize(),
+               'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
+               'crossDomain': true,
+               'dataType': 'jsonp',
+               'type': 'POST',
+               'contentType': 'application/json; charset=utf-8',
+               'responseType': 'text/html',
+               'jsonpCallback': 'processJSONPResponse'
+            });
+         }
+      });
+
+      // Funtion to display input labels
+      $("input[type='text']").on('input', function (e) {
+         if ($(this).val()) {
+            $(this).parent().find("label").addClass("visibility_show");
+         } else {
+            $(this).parent().find("label").removeClass("visibility_show");
+         }
+      });
+   });
+
+   // Function hides form and displays thank you message
+   function processJSONPResponse(response) {
+      $("#thxlayout").show();
+      $("#text1_wrapper").hide();
+      $("#text2_wrapper").hide();
+      $("#newsletterSignUp").hide();
+   }
+
+   // Function to disable sign up button unless a checkbox is checked
+   $(function () {
+      const button = $('#submit').attr('disabled', 'disabled');
+      let checkbox = document.getElementsByName('checkbox');
+      const form_input_checkbox_error = $("#form_input_checkbox_error");
+
+      while (checkbox.checked) {
+
+         button.removeAttr('disabled');
+         form_input_checkbox_error.addClass('hide');
+      }
+
+      button.attr('disabled', 'disabled');
+      form_input_checkbox_error.removeClass('hide').text('You must select 1 or more options.');
+
+   });
+
+
+</script>
+
+</html>
