@@ -116,7 +116,7 @@ set @channel = RequestParameter("channel")
                   <!-- Checkboxes -->
                   <div class="fieldset form_spacing flex">
                      <div class="checkbox_block">
-                        <input type="checkbox" id="checkbox1" class="checkbox" />
+                        <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox" />
                      </div>
                      <div class="label_block">
                         <label class="checkbox_label" for="checkbox1">I get too many emails</label>
@@ -125,7 +125,7 @@ set @channel = RequestParameter("channel")
 
                   <div class="fieldset form_spacing flex">
                      <div class="checkbox_block">
-                        <input type="checkbox" id="checkbox2" class="checkbox" />
+                        <input type="checkbox" id="checkbox2" class="checkbox" name="checkbox" />
                      </div>
                      <div class="label_block">
                         <label class="checkbox_label" for="checkbox2">The content isn't relevant</label>
@@ -134,7 +134,7 @@ set @channel = RequestParameter("channel")
 
                   <div class="fieldset form_spacing flex">
                      <div class="checkbox_block">
-                        <input type="checkbox" id="checkbox3" class="checkbox" />
+                        <input type="checkbox" id="checkbox3" class="checkbox" name="checkbox" />
                      </div>
                      <div class="label_block">
                         <label class="checkbox_label" for="checkbox3">Too many ads</label>
@@ -145,7 +145,7 @@ set @channel = RequestParameter("channel")
                      <div class="checkbox_wrapper">
                         <div class="flex">
                            <div class="checkbox_block">
-                              <input type="checkbox" id="checkbox4" class="checkbox" />
+                              <input type="checkbox" id="checkbox4" class="checkbox" name="checkbox" />
                            </div>
                            <div class="label_block">
                               <label class="checkbox_label" for="checkbox4">Other (Please specify)</label>
@@ -243,29 +243,18 @@ set @channel = RequestParameter("channel")
 
    // Function to disable sign up button unless a checkbox is checked
    $(function () {
-      const button = $('#submit');
-      //const form_input_checkbox_error = $("#form_input_checkbox_error");
+      const button = $('#submit').attr('disabled', 'disabled');
+      let checkbox = document.getElementsByName('checkbox');
+      const form_input_checkbox_error = $("#form_input_checkbox_error");
+
+      while (checkbox.checked) {
+
+         button.removeAttr('disabled');
+         form_input_checkbox_error.addClass('hide');
+      }
+
       button.attr('disabled', 'disabled');
-
-      // Checkbox1
-      $("#checkbox1, #checkbox2, #checkbox3, #checkbox4").change(function (e) {
-         /* if (this.checked > 0) {
-             button.removeAttr('disabled');
-             //form_input_checkbox_error.addClass('hide');
-          } else {
-             button.attr('disabled', 'disabled');
-             //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
-          }*/
-
-         do {
-            button.removeAttr('disabled');
-            //form_input_checkbox_error.addClass('hide');
-         }
-
-         button.attr('disabled', 'disabled');
-         //form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
-      })
-
+      form_input_checkbox_error.removeClass('hide').text('You must select 1 or more options.');
 
    });
 
