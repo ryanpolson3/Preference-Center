@@ -72,7 +72,7 @@ set @channel = RequestParameter("channel")
            }
          };
        </script> -->
-   <link rel="stylesheet" href="/Easy Unsubscribe/feedback.css">
+   <link rel="stylesheet" href="/Easy Unsubscribe/newsletter-preferences.css">
    <!-- Google Fonts -->
    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
    <!-- Font Awesome -->
@@ -87,11 +87,11 @@ set @channel = RequestParameter("channel")
    </div>
    <div class="layout">
       <div id="text1_wrapper">
-         <div class="text1">You have been successfully unsubscribed from the KOMO Daily Newsletter</div>
+         <div class="text1">Newsletter Preferences</div>
       </div>
       <div id="text2_wrapper">
          <div class="text2">
-            If you did this in error, you may re-subscribe by <a class="update-your-preferences" href="#" target="_blank">updating your preferences</a>.
+            Please select the type of communcations you would like to receive at <span class="email">johndoe@gmail.com</span>.
          </div>
       </div>
       <div class="layout_wrapper">
@@ -107,19 +107,13 @@ set @channel = RequestParameter("channel")
                      <input value="In-line sign-up" type="hidden" name="source" />
                   </div>
 
-                  <div id="text3_wrapper">
-                     <div class="text3">
-                        Reason for unsubscribe <span class="select-all-that-apply">(select all that apply)</span>
-                     </div>
-                  </div>
-
                   <!-- Checkboxes -->
                   <div class="fieldset form_spacing flex">
                      <div class="checkbox_block">
                         <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox" />
                      </div>
                      <div class="label_block">
-                        <label class="checkbox_label" for="checkbox1">I get too many emails</label>
+                        <label class="checkbox_label" for="checkbox1">Yes, I would like to subscribe to the KOMO Daily Newsletter</label>
                      </div>
                   </div>
 
@@ -128,7 +122,7 @@ set @channel = RequestParameter("channel")
                         <input type="checkbox" id="checkbox2" class="checkbox" name="checkbox" />
                      </div>
                      <div class="label_block">
-                        <label class="checkbox_label" for="checkbox2">The content isn't relevant</label>
+                        <label class="checkbox_label" for="checkbox2">Yes, I would like to subscribe to the KOMO Weather Newsletter</label>
                      </div>
                   </div>
 
@@ -137,22 +131,17 @@ set @channel = RequestParameter("channel")
                         <input type="checkbox" id="checkbox3" class="checkbox" name="checkbox" />
                      </div>
                      <div class="label_block">
-                        <label class="checkbox_label" for="checkbox3">Too many ads</label>
+                        <label class="checkbox_label" for="checkbox3">Yes, I would like to receive marketing communcations</label>
                      </div>
                   </div>
 
                   <div class="fieldset form_spacing">
-                     <div class="checkbox_wrapper">
-                        <div class="flex">
-                           <div class="checkbox_block">
-                              <input type="checkbox" id="checkbox4" class="checkbox" name="checkbox" />
-                           </div>
-                           <div class="label_block">
-                              <label class="checkbox_label" for="checkbox4">Other (Please specify)</label>
-                           </div>
+                     <div class="fieldset form_spacing flex">
+                        <div class="checkbox_block">
+                           <input type="checkbox" id="checkbox3" class="checkbox" name="checkbox" />
                         </div>
-                        <div class="textarea_wrapper">
-                           <textarea class="form_inputs" name="" id="" cols="30" rows="10"></textarea>
+                        <div class="label_block">
+                           <label class="checkbox_label" for="checkbox3">I would no longer like to receive any emails from KOMO</label>
                         </div>
                      </div>
 
@@ -244,14 +233,14 @@ set @channel = RequestParameter("channel")
    // Function to disable sign up button unless a checkbox is checked
    $(function () {
       const button = $('#submit').attr('disabled', 'disabled');
-      let checkbox = document.getElementsByName('checkbox');
       const form_input_checkbox_error = $("#form_input_checkbox_error");
 
-      while (checkbox.checked) {
-
+      // The selector can be any valid CSS selector identifying the checkbox
+      document.querySelectorAll("input[type=checkbox]").forEach(el => el.addEventListener("change", function () {
+         console.log("New value is: " + this.checked);
          button.removeAttr('disabled');
          form_input_checkbox_error.addClass('hide');
-      }
+      }, false));
 
       button.attr('disabled', 'disabled');
       form_input_checkbox_error.removeClass('hide').text('You must select 1 or more options.');
