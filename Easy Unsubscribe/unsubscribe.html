@@ -194,15 +194,12 @@ Variable.SetValue("@broswer",browser);
 	// Function to disable sign up button unless checkbox is checked
 	$(function () {
 		const button = $('#unsubscribe');
-		//const form_input_checkbox_error = $("#form_input_checkbox_error");
 		button.attr('disabled', 'disabled');
 		$('#form_input_email').change(function (e) {
 			if (this.value) {
 				button.removeAttr('disabled');
-				//form_input_checkbox_error.addClass('hide');
 			} else {
 				button.attr('disabled', 'disabled');
-				//form_input_checkbox_error.removeClass('hide').text('You must agree to the terms and conditions and the privacy policy in order to sign up to our newsletters');
 			}
 		})
 	});
