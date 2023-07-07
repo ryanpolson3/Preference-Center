@@ -135,22 +135,18 @@ set @channel = RequestParameter("channel")
                      </div>
                   </div>
 
-                  <div class="fieldset form_spacing">
-                     <div class="fieldset form_spacing flex">
-                        <div class="checkbox_block">
-                           <input type="checkbox" id="checkbox3" class="checkbox" name="checkbox" />
-                        </div>
-                        <div class="label_block">
-                           <label class="checkbox_label" for="checkbox3">I would no longer like to receive any emails from KOMO</label>
-                        </div>
+                  <div class="fieldset form_spacing flex">
+                     <div class="checkbox_block">
+                        <input type="checkbox" id="checkbox4" class="checkbox" name="checkbox" />
                      </div>
-
-                     <div id="form_input_checkbox_error" class="form_inputs_help"></div>
+                     <div class="label_block">
+                        <label class="checkbox_label" for="checkbox4">I would no longer like to receive any emails from KOMO</label>
+                     </div>
                   </div>
 
                   <!-- Submit - Button -->
                   <div class="fieldset submit_wrapper">
-                     <button id="submit" class="submit" name="submit" aria-label="Submit Button">
+                     <button id="submit" class="submit" name="submit" aria-label="Submit Button" disabled>
                         Submit
                      </button>
                   </div>
@@ -231,21 +227,30 @@ set @channel = RequestParameter("channel")
    }
 
    // Function to disable sign up button unless a checkbox is checked
-   $(function () {
-      const button = $('#submit').attr('disabled', 'disabled');
-      const form_input_checkbox_error = $("#form_input_checkbox_error");
+   function checkCheckboxes() {
+      const button = $('#submit');
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let checked = false;
 
-      // The selector can be any valid CSS selector identifying the checkbox
-      document.querySelectorAll("input[type=checkbox]").forEach(el => el.addEventListener("change", function () {
-         console.log("New value is: " + this.checked);
+      for (let i = 0; i < checkboxes.length; i++) {
+         if (checkboxes[i].checked) {
+            checked = true;
+            break;
+         }
+      }
+
+      if (checked) {
          button.removeAttr('disabled');
-         form_input_checkbox_error.addClass('hide');
-      }, false));
+      } else {
+         button.attr('disabled', 'disabled');
+      }
+   };
 
-      button.attr('disabled', 'disabled');
-      form_input_checkbox_error.removeClass('hide').text('You must select 1 or more options.');
 
-   });
+   setInterval(checkCheckboxes, 100); // Check every 1 second (1000 milliseconds)
+
+
+
 
 
 </script>

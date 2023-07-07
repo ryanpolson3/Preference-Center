@@ -524,7 +524,6 @@ input[type="checkbox"]:checked:after {
 }
 
 .submit:disabled {
-  /* background-color: var(--grey-very-light); */
   color: var(--white);
   box-shadow: none;
   opacity: 0.5;
