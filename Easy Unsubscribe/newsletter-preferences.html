@@ -135,7 +135,7 @@ set @channel = RequestParameter("channel")
                      </div>
                   </div>
 
-                  <div class="fieldset form_spacing flex">
+                  <div class="fieldset form_spacing_extra flex ">
                      <div class="checkbox_block">
                         <input type="checkbox" id="checkbox4" class="checkbox" name="checkbox" />
                      </div>
@@ -144,21 +144,22 @@ set @channel = RequestParameter("channel")
                      </div>
                   </div>
 
+                  <div class="fieldset visibility_hidden" id="thxlayout">
+                     <div class="thxtext1_wrapper">
+                        <div class="thxtext1">Your Preferences Have Been Updated</div>
+                     </div>
+                  </div>
+
                   <!-- Submit - Button -->
                   <div class="fieldset submit_wrapper">
                      <button id="submit" class="submit" name="submit" aria-label="Submit Button" disabled>
-                        Submit
+                        Save Preferences
                      </button>
                   </div>
 
                </div>
             </div>
          </form>
-      </div>
-      <div id="thxlayout" style="display: none">
-         <div class="thxtext1_wrapper">
-            <div class="thxtext1">Thank you for your feedback</div>
-         </div>
       </div>
    </div>
 </body>
@@ -170,60 +171,24 @@ set @channel = RequestParameter("channel")
          data = $(this).serialize();
          sendToUDL({ event: 'newsletter_signup_complete' })
 
-         if ($(this).find("input[name='email']").val().length === 0) {
+         // Run AJAX
+         $.ajax({
+            'data': $(this).serialize(),
+            'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
+            'crossDomain': true,
+            'dataType': 'jsonp',
+            'type': 'POST',
+            'contentType': 'application/json; charset=utf-8',
+            'responseType': 'text/html',
+            'jsonpCallback': 'processJSONPResponse'
+         });
 
-            // Error Message: Email address required
-            $(this).find("input[name='email']").addClass("form_input_error");
-            $(this).find("label[id='label_email']").addClass("form_label_error");
-            const form_error_el = $(this).find("div[id='form_input_error']");
-            form_error_el.removeClass("hide").text('Email address is required');
-
-         } else if (!validateEmail($(this).find("input[name='email']").val())) {
-
-            // Error Message: Email address is invalid
-            $(this).find("input[name='email']").addClass("form_input_error");
-            $(this).find("label[id='label_email']").addClass("form_label_error");
-            const form_error_el = $(this).find("div[id='form_input_error']");
-            form_error_el.removeClass("hide").text('Email address is invalid');
-
-         } else {
-
-            // Successful Validation: Remove all error messages and states
-            $(this).find("input[name='email']").removeClass("form_input_error");
-            $(this).find("label[id='label_email']").removeClass("form_label_error");
-            const form_error_el = $(this).find("div[id='form_input_error']");
-            form_error_el.addClass("hide").text('');
-
-            // Run AJAX
-            $.ajax({
-               'data': $(this).serialize(),
-               'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
-               'crossDomain': true,
-               'dataType': 'jsonp',
-               'type': 'POST',
-               'contentType': 'application/json; charset=utf-8',
-               'responseType': 'text/html',
-               'jsonpCallback': 'processJSONPResponse'
-            });
-         }
-      });
-
-      // Funtion to display input labels
-      $("input[type='text']").on('input', function (e) {
-         if ($(this).val()) {
-            $(this).parent().find("label").addClass("visibility_show");
-         } else {
-            $(this).parent().find("label").removeClass("visibility_show");
-         }
       });
    });
 
    // Function hides form and displays thank you message
    function processJSONPResponse(response) {
-      $("#thxlayout").show();
-      $("#text1_wrapper").hide();
-      $("#text2_wrapper").hide();
-      $("#newsletterSignUp").hide();
+      $("#thxlayout").removeClass('visibility_hidden');
    }
 
    // Function to disable sign up button unless a checkbox is checked
@@ -244,13 +209,19 @@ set @channel = RequestParameter("channel")
       } else {
          button.attr('disabled', 'disabled');
       }
+
+      // Function changes all checkboxes to false except checkbox4
+      document.getElementById("checkbox4").addEventListener("click", function () {
+         if (this.checked) {
+            $('#checkbox1, #checkbox2, #checkbox3').prop('checked', false);
+            $('#checkbox1, #checkbox2, #checkbox3').prop('disabled', true);
+         } else {
+            $('#checkbox1, #checkbox2, #checkbox3').prop('disabled', false);
+         }
+      });
    };
 
    setInterval(checkCheckboxes, 100); // Check every .1 second (100 milliseconds)
-
-
-
-
 
 </script>
 

@@ -23,6 +23,7 @@
   --blue-st-patricks: #1f3f66;
   --tangaroa-blue: #122B42;
   --green-lime: #5bcd3e;
+  --neon-green: #00A42B;
   --red: #ff0800;
   --cg-red: #dd3b38;
   --red-error: #FF4747;
@@ -254,6 +255,11 @@ body.loading #modal_loading {
   padding-top: 24px;
 }
 
+.form_spacing_extra {
+  padding-top: 50px;
+  padding-bottom: 0px;
+}
+
 .form_labels {
   font-family: var(--open-sans-normal);
   font-weight: 600;
@@ -273,8 +279,8 @@ body.loading #modal_loading {
   font-weight: 100;
 }
 
-.visibility_show {
-  visibility: visible;
+.visibility_hidden {
+  visibility: hidden;
 }
 
 .form_inputs {
@@ -491,7 +497,7 @@ input[type="checkbox"]:checked:after {
   width: 100%;
   height: 60px;
   z-index: 9000;
-  padding-top: 11px;
+  /* padding-top: 11px; */
 }
 
 .submit {
@@ -536,8 +542,9 @@ input[type="checkbox"]:checked:after {
 
 /* Thank you for subscribing */
 .thxtext1_wrapper {
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 16px;
+  padding-left: 5px;
 }
 
 .update {
@@ -550,21 +557,14 @@ input[type="checkbox"]:checked:after {
 }
 
 .thxtext1 {
-  font-family: var(--open-sans-normal);
+  font-family: var(--arial);
   font-weight: bold;
-  color: var(--grey-very-dark);
-  font-size: 20px;
-  text-align: center;
+  color: var(--neon-green);
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+  text-transform: uppercase;
 }
 
-.thxtext2 {
-  font-family: var(--open-sans-normal);
-  color: var(--grey-very-dark);
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 12px;
-  text-align: center;
-  padding-top: 20px;
-}
 
 
