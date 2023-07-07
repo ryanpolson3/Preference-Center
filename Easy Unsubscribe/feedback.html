@@ -109,7 +109,7 @@ set @channel = RequestParameter("channel")
 
                   <div id="text3_wrapper">
                      <div class="text3">
-                        Reason for unsubscribe <span class="select-all-that-apply">(select all that apply)</span>
+                        Reason for unsubscribe <span class="select-all-that-apply">(Select all that apply)</span>
                      </div>
                   </div>
 
@@ -242,21 +242,26 @@ set @channel = RequestParameter("channel")
    }
 
    // Function to disable sign up button unless a checkbox is checked
-   $(function () {
-      const button = $('#submit').attr('disabled', 'disabled');
-      let checkbox = document.getElementsByName('checkbox');
-      const form_input_checkbox_error = $("#form_input_checkbox_error");
+   function checkCheckboxes() {
+      const button = $('#submit');
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let checked = false;
 
-      while (checkbox.checked) {
-
-         button.removeAttr('disabled');
-         form_input_checkbox_error.addClass('hide');
+      for (let i = 0; i < checkboxes.length; i++) {
+         if (checkboxes[i].checked) {
+            checked = true;
+            break;
+         }
       }
 
-      button.attr('disabled', 'disabled');
-      form_input_checkbox_error.removeClass('hide').text('You must select 1 or more options.');
+      if (checked) {
+         button.removeAttr('disabled');
+      } else {
+         button.attr('disabled', 'disabled');
+      }
+   };
 
-   });
+   setInterval(checkCheckboxes, 100); // Check every .1 second (100 milliseconds)
 
 
 </script>
