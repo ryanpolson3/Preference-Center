@@ -1,6 +1,8 @@
-<!-- %%[
-set @channel = RequestParameter("channel")
-]%% -->
+%%[
+SET @channel = RequestParameter("channel")
+SET @email = RequestParameter("email")
+SET @cloudPageURL = CloudPagesURL(73, 'email', email)
+]%%
 <script type="javascript" runat="server">
 Platform.Load("core","1"); 
 var ip = Platform.Request.ClientIP();
@@ -90,7 +92,7 @@ Variable.SetValue("@broswer",browser);
 			<div class="text1">Enter your email address to unsubscribe from the KOMO Daily Newsletter</div>
 		</div>
 		<div class="layout_wrapper">
-			<form style="display: block" id="newsletterSignUp" method="post" action="#" novalidate>
+			<form style="display: block" id="newsletterSignUp" method="get" action="%%=RedirectTo(@cloudPageURL)=%%" novalidate>
 				<div class="form_wrapper">
 					<div class="form">
 
@@ -134,8 +136,6 @@ Variable.SetValue("@broswer",browser);
 	$(function () {
 		$("#newsletterSignUp").submit(function (e) {
 			e.preventDefault();
-			data = $(this).serialize();
-			sendToUDL({ event: 'newsletter_signup_complete' })
 
 			if ($(this).find("input[name='email']").val().length === 0) {
 
@@ -160,19 +160,9 @@ Variable.SetValue("@broswer",browser);
 				$(this).find("label[id='label_email']").removeClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.addClass("hide").text('');
-
-				// Run AJAX
-				$.ajax({
-					'data': $(this).serialize(),
-					'url': 'https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/xsf5hhqvrvq',
-					'crossDomain': true,
-					'dataType': 'jsonp',
-					'type': 'POST',
-					'contentType': 'application/json; charset=utf-8',
-					'responseType': 'text/html',
-					'jsonpCallback': 'processJSONPResponse'
-				});
 			}
+
+
 		});
 
 		// Funtion to display input labels
