@@ -1,7 +1,8 @@
 %%[
 SET @channel = RequestParameter("channel")
 SET @email = RequestParameter("email")
-SET @cloudPageURL = CloudPagesURL(73, 'email', email)
+SET @feedbackURL = CloudPagesURL(73, 'email', email)
+SET @feedbackURL = CloudPagesURL(74, 'email', email)
 ]%%
 <script type="javascript" runat="server">
 Platform.Load("core","1"); 
@@ -92,7 +93,7 @@ Variable.SetValue("@broswer",browser);
 			<div class="text1">Enter your email address to unsubscribe from the KOMO Daily Newsletter</div>
 		</div>
 		<div class="layout_wrapper">
-			<form style="display: block" id="newsletterSignUp" method="get" action="%%=RedirectTo(@cloudPageURL)=%%" novalidate>
+			<form style="display: block" id="newsletterSignUp" method="get" action="%%=RedirectTo(@feedbackURL)=%%" novalidate>
 				<div class="form_wrapper">
 					<div class="form">
 
@@ -120,7 +121,7 @@ Variable.SetValue("@broswer",browser);
 
 						<!-- Update Preferences - Link -->
 						<div class="fieldset update_wrapper">
-							<a href="https://mcscy3hz7znv60v-895pbhg46h81.pub.sfmc-content.com/uln3phixkbi" id="update" class="update" name="update" aria-label="Update Link">
+							<a href="%%=RedirectTo(@preferenceURL)=%%" id="update" class="update" name="update" aria-label="Update Link">
 								Updated your preferences
 							</a>
 						</div>
