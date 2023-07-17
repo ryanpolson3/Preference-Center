@@ -93,7 +93,7 @@ Variable.SetValue("@broswer",browser);
 			<div class="text1">Enter your email address to unsubscribe from the KOMO Daily Newsletter</div>
 		</div>
 		<div class="layout_wrapper">
-			<form style="display: block" id="newsletterSignUp" method="get" action="%%=RedirectTo(@feedbackURL)=%%" novalidate>
+			<form style="display: block" id="newsletterUnsubscribe" method="get" action="%%=RedirectTo(@feedbackURL)=%%" novalidate>
 				<div class="form_wrapper">
 					<div class="form">
 
@@ -135,8 +135,7 @@ Variable.SetValue("@broswer",browser);
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js">  </script>
 <script>
 	$(function () {
-		$("#newsletterSignUp").submit(function (e) {
-			e.preventDefault();
+		$("#newsletterUnsubscribe").submit(function (e) {
 
 			if ($(this).find("input[name='email']").val().length === 0) {
 
@@ -145,6 +144,7 @@ Variable.SetValue("@broswer",browser);
 				$(this).find("label[id='label_email']").addClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.removeClass("hide").text('Email address is required');
+				e.preventDefault();
 
 			} else if (!validateEmail($(this).find("input[name='email']").val())) {
 
@@ -153,6 +153,7 @@ Variable.SetValue("@broswer",browser);
 				$(this).find("label[id='label_email']").addClass("form_label_error");
 				const form_error_el = $(this).find("div[id='form_input_error']");
 				form_error_el.removeClass("hide").text('Email address is invalid');
+				e.preventDefault();
 
 			} else {
 
